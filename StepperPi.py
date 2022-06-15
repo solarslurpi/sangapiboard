@@ -1,4 +1,4 @@
-from re import M
+
 import RPi.GPIO as GPIO
 
 class Stepper:
@@ -11,9 +11,9 @@ class Stepper:
         # Use the RaspPi board numbers
         GPIO.setmode(GPIO.BOARD)
         # Set the four motor pins to output and initialize to 0 V (False)
-        for pin in self.motor_pins:
-            GPIO.setup(pin,GPIO.OUT)
-            GPIO.output(pin,False)
+        # for pin in self.motor_pins:
+        #     GPIO.setup(pin,GPIO.OUT)
+        #     GPIO.output(pin,False)
 
     def stepMotor(self,thisStep):
         # It easier to see how the motor is energized to move around if we look at
@@ -28,8 +28,8 @@ class Stepper:
             [0,0,1,1],
             [0,0,0,1]
         ]
-        for pin in self.motor_pins:
-            GPIO.output(pin,step_sequences[thisStep][pin])
+        # for i in range(4):
+        #     GPIO.output(self.motor_pins[i],step_sequences[thisStep][i])
 
 
 
