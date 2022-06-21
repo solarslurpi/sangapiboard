@@ -67,7 +67,7 @@ class Stepper:
             [0,0,0,1]
         ]
         # print(f'step number: {thisStep}')
-        # Energize the stepper's coils if pins are set to 1.
+        # Stepper coils are energized if the GPIO pin associated with the coil is set to 1.
         for i in range(4): # 4 GPIO pins
             # thisStep is between 0 and 7.  These are the 8 half-steps.
             GPIO.output(self.motor_pins[i],step_sequences[thisStep][i])
@@ -83,6 +83,8 @@ class Stepper:
 
     def releaseMotor(self,which_motor):
         self.assertIn(which_motor,range(self.n_motors)) # Make sure which motor is between 0 and n_motors (usually, always? x, y, and z)
+        for i in range(4):
+            GPIO.output(self.motor_pins[i],0)
         return
 
 
