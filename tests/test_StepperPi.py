@@ -1,6 +1,6 @@
 import time
 import pytest
-from StepperPi import Stepper
+from StepperPy import Stepper
 
 
 @pytest.fixture

@@ -24,9 +24,17 @@ class Stepper:
         GPIO.cleanup()
         return
 
+    def board(self):
+        return "Raspberry Pi"
 
+    def firmware(self):
+        return "0.0"
+
+        
     def step(self,steps_to_move):
-        # Given there are 8 half steps, 8 steps means 1 rotation.
+        '''Move the motor 1 half step.  there are 8 half steps in one gear rotation.
+        '''
+        
         steps_left = abs(steps_to_move)
         self.direction = 1 if steps_to_move > 0 else 0
         time_since_last = 0
